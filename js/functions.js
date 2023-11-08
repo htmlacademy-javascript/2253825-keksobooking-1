@@ -33,4 +33,4 @@ const getRandomCoordinates = (min, max, decimal) => {
   return random.toFixed(decimal);
 };
 
-console.log(getRandomCoordinates(6, -10, 66,6));
+getRandomCoordinates(6, 66, 66,6);
