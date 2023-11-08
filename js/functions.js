@@ -28,9 +28,17 @@ const myPadStart = (str, minLength, pad) => {
 myPadStart('q', 4, 'we');
 
 
-const getRandomCoordinates = (min, max, decimal) => {
+const getRandomCoordinates = (min, max, bitDepth) => {
+
+  if (min < 0 || max < 0) {
+    return NaN;
+  }
+
   const random = Math.random() * (max - min + 1) + min;
-  return random.toFixed(decimal);
+
+  return random.toFixed(bitDepth);
 };
 
-getRandomCoordinates(6, 66, 66,6);
+getRandomCoordinates(3, 666, 9);
+
+
