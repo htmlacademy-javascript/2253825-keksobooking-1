@@ -18,9 +18,11 @@ extractNumber('ECMAScript 2023');
 
 
 const myPadStart = (str, minLength, pad) => {
+
   const actualPad = minLength - str.length;
-  return (actualPad <= 0) ? str : pad.slice (0, actualPad % pad.length)
-+ pad.repeat (actualPad / pad.length) + str;
+
+  return (actualPad <= 0) ? str : pad.slice(0,
+    actualPad % pad.length) + pad.repeat(actualPad / pad.length) + str;
 };
 
 myPadStart('q', 4, 'we');
@@ -28,15 +30,15 @@ myPadStart('q', 4, 'we');
 
 const getRandomCoordinates = (min, max, bitDepth) => {
 
-  if (min < 0 || max < 0) {
+  if (min < 0 || max < 0 || max < min) {
     return NaN;
   }
 
-  const random = Math.random() * (max - min + 1) + min;
+  const random = Math.random() * (max - min) + min;
 
   return random.toFixed(bitDepth);
 };
 
-getRandomCoordinates(3, 666, 9);
+getRandomCoordinates(1.11, 1.12, 6);
 
 
