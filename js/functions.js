@@ -1,7 +1,5 @@
-const isPalindrom = (str) => {
-  const normalizedStr = str.toLowerCase().replaceAll(' ', '');
-  return normalizedStr === normalizedStr.split('').reverse().join('');
-};
+const isPalindrom = (str) => str.toLowerCase().replaceAll(' ', '')
+  .split('').reverse().join('');
 
 isPalindrom('Лёша на полке клопа нашёл');
 
