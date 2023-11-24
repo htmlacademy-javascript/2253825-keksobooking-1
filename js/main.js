@@ -1,5 +1,5 @@
-import { generateAccommodationOffers } from './data.js';
+import { createAccomodationCard } from './popup-card.js';
 
 
-generateAccommodationOffers();
+createAccomodationCard();
 

@@ -1,5 +1,6 @@
 import { getRandomCoordinates, getRandomInteger, getRandomArrayElement, getRandomArray } from './util.js';
 
+
 const OFFER_COUNT = 10;
 const TITLE = 'Предложение размещения';
 const MAX_PRICE = 100000;
