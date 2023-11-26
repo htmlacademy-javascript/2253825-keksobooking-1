@@ -15,8 +15,7 @@ const accomodationOfferType = {
 
 
 const hideBlockContent = (block, data) => {
-
-  if(!data || data === 0) {
+  if (!data) {
     block.style.display = 'none';
   }
 };
@@ -54,20 +53,24 @@ const getPhotosList = (element, photos) => {
 
 const createAdvertCard = ({offer, author}) => {
 
+  const {title, address, price, type, rooms, guests, checkin,
+    checkout, features, photos, description} = offer;
+
   const cardElement = cardTemplate.cloneNode(true);
 
-  const description = cardElement.querySelector('.popup__description');
-  cardElement.querySelector('.popup__title').textContent = offer.title;
-  cardElement.querySelector('.popup__text--address').textContent = offer.address;
-  cardElement.querySelector('.popup__text--price').textContent = `${offer.price} ₽/ночь`;
-  cardElement.querySelector('.popup__type').textContent = accomodationOfferType[offer.type];
-  cardElement.querySelector('.popup__text--capacity').textContent = `${offer.rooms} комнаты для ${offer.guests} гостей`;
-  cardElement.querySelector('.popup__text--time').textContent = `Заезд после ${offer.checkin}, выезд до ${offer.checkout}`;
-  cardElement.querySelector('.popup__avatar').srv = author.avatar;
+  const offerDescription = cardElement.querySelector('.popup__description');
+  cardElement.querySelector('.popup__title').textContent = title;
+  cardElement.querySelector('.popup__text--address').textContent = address;
+  cardElement.querySelector('.popup__text--price').textContent = `${price} ₽/ночь`;
+  cardElement.querySelector('.popup__type').textContent = accomodationOfferType[type];
+  cardElement.querySelector('.popup__text--capacity').textContent = `${rooms} комнаты для ${guests} гостей`;
+  cardElement.querySelector('.popup__text--time').textContent = `Заезд после ${checkin}, выезд до ${checkout}`;
+  cardElement.querySelector('.popup__avatar').src = author.avatar;
+  cardElement.querySelector('.popup__description').textContent = description;
 
-  getFeaturesList(cardElement, offer.features);
-  getPhotosList(cardElement, offer.photos);
-  hideBlockContent(description, offer.description);
+  hideBlockContent(offerDescription, description);
+  getFeaturesList(cardElement, features);
+  getPhotosList(cardElement, photos);
 
   return cardElement;
 };
@@ -77,7 +80,6 @@ const createAccomodationCard = () => {
 
   const offerElement = generateAccommodationOffers();
   const cardElement = createAdvertCard(offerElement[0]);
-
 
   return cardContainer.appendChild(cardElement);
 };
