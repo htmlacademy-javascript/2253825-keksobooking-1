@@ -1,3 +1,5 @@
+import { onPriceSliderUpdate } from './price-slider.js';
+
 const adForm = document.querySelector ('.ad-form');
 const adTitle = adForm.querySelector('#title');
 const adPrice = adForm.querySelector('#price');
@@ -42,6 +44,7 @@ const pristine = new Pristine(adForm, {
   errorTextClass: 'ad-form__error'
 });
 
+
 const getValidTitle = (title) => title.length >= MIN_TITLE_SYMBOLS && title.length <= MAX_TITLE_SYMBOLS;
 
 const getErrorNoticeTitle = () => `Не менее ${ MIN_TITLE_SYMBOLS } и не более ${ MAX_TITLE_SYMBOLS } символов`;
@@ -52,12 +55,13 @@ const getErrorNoticePrice = () => `Цена от ${ MIN_STAY_PRICE[housingType.v
 
 const getValidRoom = () => CAPACITY_LIMIT[numberOfRoom.value].includes(residentsNumber.value);
 
+const getErrorNoticeRoom = () => `Условия бронирования: ${numberOfRoom.value} ${GUESTS_LIMIT[numberOfRoom.value]} `;
 
-const getErrorNoticeRoom = () =>
-  `Условия бронирования: ${numberOfRoom.value} ${GUESTS_LIMIT[numberOfRoom.value]} `;
+const getErrorNoticeCapacity = () => 'Неверно введено количество комнат';
 
 
 const getChangedPrice = () => {
+  onPriceSliderUpdate(MIN_STAY_PRICE[housingType.value]);
   adPrice.placeholder = MIN_STAY_PRICE[housingType.value];
   pristine.validate(adPrice);
 };
@@ -80,7 +84,7 @@ const setupValidatedForm = () => {
   pristine.addValidator(adTitle, getValidTitle, getErrorNoticeTitle);
   pristine.addValidator(adPrice, getValidPrice, getErrorNoticePrice);
   pristine.addValidator(residentsNumber, getValidRoom, getErrorNoticeRoom);
-  pristine.addValidator(numberOfRoom, getValidRoom, getErrorNoticeRoom);
+  pristine.addValidator(numberOfRoom, getValidRoom, getErrorNoticeCapacity);
 
   housingType.addEventListener ('change', getChangedPrice);
   timeIn.addEventListener ('change', getChangedTime);

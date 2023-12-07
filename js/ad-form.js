@@ -4,6 +4,7 @@ const fieldsetElements = adForm.querySelectorAll('fieldset, select');
 
 
 const toggleFormState = (state) => {
+
   adForm.classList[state ? 'add' : 'remove']('ad-form--disabled');
   formFilter.classList[state ? 'add' : 'remove']('map__filters--disabled');
 
