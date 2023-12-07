@@ -22,15 +22,15 @@ const MIN_STAY_PRICE = {
 const CAPACITY_LIMIT = {
   1: ['1'],
   2: ['1', '2'],
-  3: ['1', '2','3'],
+  3: ['1', '2', '3'],
   100: ['0']
 };
 
 const GUESTS_LIMIT = {
-  1: ['для размещения 1 гостя'],
-  2: ['для размещения от 1 до 2 гостей'],
-  3: ['для размещения от 1 до 3 гостей'],
-  100: ['не для гостей']
+  1: ['комната для размещения 1 гостя'],
+  2: ['комнаты для размещения от 1 до 2 гостей'],
+  3: ['комнаты для размещения от 1 до 3 гостей'],
+  100: ['комнат не для гостей']
 };
 
 const pristine = new Pristine(adForm, {
@@ -54,13 +54,7 @@ const getValidRoom = () => CAPACITY_LIMIT[numberOfRoom.value].includes(residents
 
 
 const getErrorNoticeRoom = () =>
-// eslint-disable-next-line no-nested-ternary
-  `Условия: ${numberOfRoom.value} ${numberOfRoom.value === '100'
-    ? 'комнат'
-    : numberOfRoom.value === '1'
-      ? 'комната'
-      : 'комнаты'}
-${GUESTS_LIMIT[numberOfRoom.value]} `;
+  `Условия бронирования: ${numberOfRoom.value} ${GUESTS_LIMIT[numberOfRoom.value]} `;
 
 
 const getChangedPrice = () => {
@@ -86,6 +80,7 @@ const setupValidatedForm = () => {
   pristine.addValidator(adTitle, getValidTitle, getErrorNoticeTitle);
   pristine.addValidator(adPrice, getValidPrice, getErrorNoticePrice);
   pristine.addValidator(residentsNumber, getValidRoom, getErrorNoticeRoom);
+  pristine.addValidator(numberOfRoom, getValidRoom, getErrorNoticeRoom);
 
   housingType.addEventListener ('change', getChangedPrice);
   timeIn.addEventListener ('change', getChangedTime);
