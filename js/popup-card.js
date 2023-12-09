@@ -1,7 +1,3 @@
-import { generateAccommodationOffers } from './data.js';
-
-
-const cardContainer = document.querySelector ('#map-canvas');
 const cardTemplate = document.querySelector ('#card').content.querySelector('.popup');
 
 
@@ -75,16 +71,5 @@ const createAdvertCard = ({offer, author}) => {
   return cardElement;
 };
 
-
-const createAccomodationCard = () => {
-
-  const offerElement = generateAccommodationOffers();
-  const cardElement = createAdvertCard(offerElement[0]);
-
-  return cardContainer.appendChild(cardElement);
-};
-
-
-export { createAccomodationCard };
-
+export { createAdvertCard };
 

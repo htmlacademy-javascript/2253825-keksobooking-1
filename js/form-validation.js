@@ -1,5 +1,6 @@
 import { onPriceSliderUpdate } from './price-slider.js';
 
+
 const adForm = document.querySelector ('.ad-form');
 const adTitle = adForm.querySelector('#title');
 const adPrice = adForm.querySelector('#price');
@@ -57,7 +58,7 @@ const getValidRoom = () => CAPACITY_LIMIT[numberOfRoom.value].includes(residents
 
 const getErrorNoticeRoom = () => `Условия бронирования: ${numberOfRoom.value} ${GUESTS_LIMIT[numberOfRoom.value]} `;
 
-const getErrorNoticeCapacity = () => 'Неверно введено количество комнат';
+const getErrorNoticeCapacity = () => 'Количество комнат не соответствует количеству гостей';
 
 
 const getChangedPrice = () => {
