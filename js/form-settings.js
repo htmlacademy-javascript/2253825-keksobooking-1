@@ -3,15 +3,15 @@ const formFilter = document.querySelector ('.map__filters');
 const fieldsetElements = adForm.querySelectorAll('fieldset, select');
 
 
-const toggleFormState = (state) => {
+const switchOnForm = (state) => {
 
-  adForm.classList[state ? 'add' : 'remove']('ad-form--disabled');
-  formFilter.classList[state ? 'add' : 'remove']('map__filters--disabled');
+  adForm.classList[state ? 'remove' : 'add' ]('ad-form--disabled');
+  formFilter.classList[state ? 'remove' : 'add']('map__filters--disabled');
 
   fieldsetElements.forEach((fieldsetElement) => {
-    fieldsetElement.disabled = false;
+    fieldsetElement.disabled = state === 'true';
   });
 };
 
 
-export { toggleFormState };
+export { switchOnForm };
