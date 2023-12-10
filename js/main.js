@@ -1,7 +1,12 @@
-import { createAccomodationCard } from './popup-card.js';
-import { toggleFormState } from './ad-form.js';
+import { generateAccommodationOffers } from './data.js';
+import { toggleFormState } from './form-settings.js';
+import { setupValidatedForm } from './form-validation.js';
+import { getRenderedMap } from './map.js';
 
-createAccomodationCard();
+
+getRenderedMap(generateAccommodationOffers());
+
+setupValidatedForm();
 
 toggleFormState();
 
