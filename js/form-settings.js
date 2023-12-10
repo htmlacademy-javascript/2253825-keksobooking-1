@@ -9,7 +9,7 @@ const switchOnForm = (state) => {
   formFilter.classList[state ? 'remove' : 'add']('map__filters--disabled');
 
   fieldsetElements.forEach((fieldsetElement) => {
-    fieldsetElement.disabled = state === 'true';
+    fieldsetElement.disabled = !state;
   });
 };
 
