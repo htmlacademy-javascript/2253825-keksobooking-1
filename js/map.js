@@ -1,5 +1,5 @@
 import { createAdvertCard } from './popup-card.js';
-import { toggleFormState } from './form-settings.js';
+import { switchOnForm } from './form-settings.js';
 
 const LAT_DEFAULT = 35.68951;
 const LNG_DEFAULT = 139.69171;
@@ -72,7 +72,7 @@ const renderMarkers = (markers) => {
 const getRenderedMap = (markers) => {
 
   MAP.on('load', () => {
-    toggleFormState(false);
+    switchOnForm(true);
   })
     .setView(
       {
