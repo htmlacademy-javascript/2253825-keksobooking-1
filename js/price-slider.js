@@ -23,4 +23,9 @@ const onPriceSliderUpdate = (price) => {
 };
 
 
-export { onPriceSliderUpdate };
+const resetSlider = () => {
+  sliderElement.noUiSlider.reset();
+};
+
+
+export { onPriceSliderUpdate, resetSlider };

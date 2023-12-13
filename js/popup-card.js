@@ -24,11 +24,13 @@ const getFeaturesList = (element, features) => {
   hideBlockContent(featuresContainer, features);
   featuresContainer.innerHTML = '';
 
-  features.forEach ((feature) => {
-    const featureElement = featureList.cloneNode(true);
-    featureElement.classList = `popup__feature popup__feature--${ feature}`;
-    featuresContainer.append(featureElement);
-  });
+  if (features) {
+    features.forEach ((feature) => {
+      const featureElement = featureList.cloneNode(true);
+      featureElement.classList = `popup__feature popup__feature--${ feature}`;
+      featuresContainer.append(featureElement);
+    });
+  }
 };
 
 
@@ -39,11 +41,13 @@ const getPhotosList = (element, photos) => {
   hideBlockContent(photosContainer, photos);
   photosContainer.innerHTML = '';
 
-  photos.forEach ((photo) => {
-    const photoElement = photoList.cloneNode(true);
-    photoElement.src = photo;
-    photosContainer.append(photoElement);
-  });
+  if (photos) {
+    photos.forEach ((photo) => {
+      const photoElement = photoList.cloneNode(true);
+      photoElement.src = photo;
+      photosContainer.append(photoElement);
+    });
+  }
 };
 
 
@@ -70,6 +74,7 @@ const createAdvertCard = ({offer, author}) => {
 
   return cardElement;
 };
+
 
 export { createAdvertCard };
 
