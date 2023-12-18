@@ -1,4 +1,8 @@
 import { onPriceSliderUpdate } from './price-slider.js';
+import { sendData } from './api.js';
+import { showSuccessMessage } from './form-message.js';
+import { switchDisableState, resetForm } from './form-settings.js';
+import { resetMap } from './map.js';
 
 
 const adForm = document.querySelector ('.ad-form');
@@ -76,7 +80,17 @@ const getChangedTime = (evt) => {
 
 const onFormSubmit = (evt) => {
   evt.preventDefault();
-  pristine.validate();
+
+  if (pristine.validate()) {
+    switchDisableState(true);
+    sendData(new FormData(evt.target))
+      .then (() => {
+        resetForm();
+        resetMap();
+        showSuccessMessage();
+      })
+      .finally(() => switchDisableState());
+  }
 };
 
 
