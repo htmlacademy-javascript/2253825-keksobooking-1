@@ -1,4 +1,5 @@
 const FILE_TYPES = ['jpg', 'jpeg', 'png'];
+const PREVIEW = 'img/muffin-grey.svg';
 
 const inputElement = document.querySelectorAll ('.ad-form input[type=file]');
 const avatarPreview = document.querySelector ('.ad-form-header__preview img');
@@ -36,7 +37,7 @@ const getImages = () => {
 const resetPreviews = () => {
 
   housingPreview.innerHTML = '';
-  avatarPreview.src = 'img/muffin-grey.svg';
+  avatarPreview.src = PREVIEW;
 };
 
 

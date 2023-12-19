@@ -52,16 +52,21 @@ const showAlertMessage = () => {
 
   const alertContainer = document.createElement('div');
 
-  alertContainer.style.right = '0';
-  alertContainer.style.left = '0';
-  alertContainer.style.backgroundColor = 'ligth-grey';
-  alertContainer.style.fontSize = '25px';
-  alertContainer.style.zIndex = '100';
-  alertContainer.style.padding = '2px';
-  alertContainer.style.textAlign = 'center';
-  alertContainer.style.color = 'red';
-  alertContainer.style.position = 'fixed';
-  alertContainer.style.top = '0';
+  const styleList = {
+    right: '0',
+    left: '0',
+    backgroundColor: 'ligth-grey',
+    fontSize: '25px',
+    zIndex: '100',
+    padding: '2px',
+    textAlign: 'center',
+    color: 'red',
+    position: 'fixed',
+    top: '0',
+  };
+
+  Object.assign(alertContainer.style, styleList);
+
   alertContainer.textContent = 'Ошибка загрузки данных! Попробуйте обновить страницу!';
 
   document.body.appendChild(alertContainer);
